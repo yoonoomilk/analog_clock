@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta charset="UTF-8">
+<title>시계</title>
+<style>
+body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  width: 100%;
+}
+@media (orientation: portrait) {
+  #circle {
+    width: 100vw;
+    height: 100vw;
+    top: 50%;
+    margin-top: calc(calc(100vw / 2) * -1);
+  }
+  #dot {
+    width: 5vw;
+    height: 5vw;
+    top: 50%;
+    left: 50%;
+    margin-top: calc(calc(100vw / 40) * -1);
+    margin-left: calc(calc(100vw / 40) * -1);
+  }
+  #hour {
+    width: 5vw;
+    height: 25vw;
+    top: 50%;
+    left: 50%;
+    margin-top: calc(calc(100vw / 4) * -1);
+    margin-left: calc(calc(100vw / 40) * -1);
+  }
+  #minutes {
+    width: 4vw;
+    height: 40vw;
+    top: 50%;
+    left: 50%;
+    margin-top: calc(calc(100vw / 2.5) * -1);
+    margin-left: calc(calc(100vw / 50) * -1);
+  }
+  #seconds {
+    width: 2vw;
+    height: 50vw;
+    top: 50%;
+    left: 50%;
+    margin-top: calc(calc(100vw / 2) * -1);
+    margin-left: calc(calc(100vw / 100) * -1);
+  }
+}
+@media (orientation: landscape) {
+  #circle {
+    width: 100vh;
+    height: 100vh;
+    left: 50%;
+    margin-left: calc(calc(100vh / 2) * -1);
+  }
+  #dot {
+    width: 5vh;
+    height: 5vh;
+    top: 50%;
+    left: 50%;
+    margin-top: calc(calc(100vh / 40) * -1);
+    margin-left: calc(calc(100vh / 40) * -1);
+  }
+  #hour {
+    width: 5vh;
+    height: 25vh;
+    top: 50%;
+    left: 50%;
+    margin-top: calc(calc(100vh / 4) * -1);
+    margin-left: calc(calc(100vh / 40) * -1);
+  }
+  #minutes {
+    width: 4vh;
+    height: 40vh;
+    top: 50%;
+    left: 50%;
+    margin-top: calc(calc(100vh / 2.5) * -1);
+    margin-left: calc(calc(100vh / 50) * -1);
+  }
+  #seconds {
+    width: 2vh;
+    height: 50vh;
+    top: 50%;
+    left: 50%;
+    margin-top: calc(calc(100vh / 2) * -1);
+    margin-left: calc(calc(100vh / 100) * -1);
+  }
+}
+.clock {
+  position: absolute;
+}
+#circle {
+  border-radius: 50%;
+  z-index: 1;
+}
+#dot {
+  background-color: black;
+  border-radius: 50%;
+  z-index: 2;
+}
+#hour, #minutes, #seconds {
+  z-index: 3;
+  background-color: black;
+  border-radius: 50%;
+  transform-origin: 50% 100%;
+}
+</style>
+</head>
+<body>
+<img class="clock" id="circle" src="img.jpg" alt="background">
+<div class="clock" id="dot"></div>
+<div class="clock" id="hour"></div>
+<div class="clock" id="minutes"></div>
+<div class="clock" id="seconds"></div>
+<script>
+setInterval(function() {
+var cur = new Date();
+var curHour = cur.getHours() * 30;
+var curMin = cur.getMinutes() * 6;
+var curSec = cur.getSeconds() * 6;
+document.getElementById("hour").style.transform = "rotate(" + curHour+(curMin/2) + "deg)";
+document.getElementById("minutes").style.transform = "rotate(" + curMin + "deg)";
+document.getElementById("seconds").style.transform = "rotate(" + curSec + "deg)";
+}, 10);
+</script>
+</body>
+</html>
