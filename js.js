@@ -3,7 +3,7 @@ var hr = document.getElementById("hr");
 var mn = document.getElementById("mn");
 var sc = document.getElementById("sc");
 
-setInterval(() => {
+setInterval(function() {
     var day = new Date();
     var hh = day.getHours() * 30;
     var mm = day.getMinutes() * deg;
